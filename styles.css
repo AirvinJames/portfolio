@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono&display=swap');
 :root {
-  --alt-text-color: #d3dedd;
+  --alt-text-color: #bcc7c6;
   --text-color: #9a9da8;
   --background: #161a27;
+  --alt-background: #262d41;
+  --sublayer: #333949;
 
   --primary: #6193ef;
   --secondary: #54dd72;
@@ -15,6 +17,7 @@
 html {
   margin: 0;
   padding: 0;
+  scroll-behavior:smooth
 }
 
 body {
@@ -29,27 +32,38 @@ body {
 
 h2, h3, p, a {
   color: var(--text-color);
-  font-family: 'Ubuntu', sans-serif;
 }
 
 h1 {
   color: var(--alt-text-color);
   font-size: 3.5em;
   font-family: 'Ubuntu', sans-serif;
+
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+h2, h3, h4, a {
+  font-family: 'Ubuntu Mono', monospace;
+  color: var(--text-color);
 }
 
 h2 {
   font-size: 2.9em;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 h3 {
-  font-family: 'Ubuntu Mono', monospace;
   font-size: 2.5em;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 h4 {
-  font-family: 'Ubuntu Mono', monospace;
   font-size: 2em;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 
@@ -66,14 +80,30 @@ main {
   row-gap: 40vh;
 }
 
+/*Section Styles*/
 section {
-  max-width: 70vw;
+  min-width: 70vw;
+  padding: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  text-align: left;
+}
+
+section h2, h3, h4 {
+  font-weight: 400;
+  color: var(--alt-text-color);
+  position: relative;
+  
+}
+
+section h2>span {
+  color: var(--primary);
 }
 
 
-
 .bold {
-  color: var(--tertiary);
+  color: var(--alt-text-color);
+  font-weight: 500;
 }
 
 /*Nav styles*/
@@ -94,6 +124,12 @@ nav > ul {
   column-gap: 1em;
 }
 
+#logo {
+  width: 5em;
+  padding: 0;
+  margin: 0;
+}
+
 #social-links {
   margin-left: auto;
 }
@@ -112,6 +148,10 @@ nav > ul {
   text-decoration: none;
 }
 
+/* DEfault section styles */
+
+/*Greeting styles*/
+
 #header {
   width: 100dvw;
   height: calc(100vh - 12rem);
@@ -121,10 +161,9 @@ nav > ul {
   justify-content: center;
   column-gap: 2rem;
 
-
+  background: none;
 }
 
-/*Greeting styles*/
 #intro {
   margin: 0;
   font-size: 1.3em;
@@ -132,13 +171,8 @@ nav > ul {
   font-family: 'Ubunto Mono', monospace;
 }
 
-#name {
-  margin: 0;
-  margin-top: 0.3em;
-}
-
 #subheading {
-  color: var(--text-color);
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   margin-top: 0.4em;
   max-width: 25ch;
@@ -171,38 +205,37 @@ nav > ul {
 
 
 /*About section styles*/
-.body {
-  max-width: 70ch;
-  margin-left: 2rem;
-}
 
 #about {
   display: flex;
   width: 70dvw;
-  align-items: center;
   justify-content: space-between;
 }
 
-#about h3, h4 {
-  color: var(--primary);
+#about-text {
+  max-width: 70ch;
 }
 
 #picture-wrapper {
-  width: 300px;
-  height: 300px;
+  width: 15vw;
+  height: 15vw;
+
+  margin-top: 6rem;
 
   display: block;
 
-  border: 0.2rem var(--secondary) solid;
+  background: var(--alt-background);
+  border: 0.2rem var(--alt-background) solid;
 }
 
 #picture-wrapper > img {
-  max-width: 300px;
-  max-height: 300px;
-
-  
+  width: 100%;
+  height: 100%;
   position: relative;
   top: -1rem;
   left: -1rem;
+  
+  box-shadow: 0.5rem 0.5rem 15px var(--background);
+  background: linear-gradient(45deg, var(--alt-background), var(--tertiary));
+  background-size: 400% 400%;
 }
-
