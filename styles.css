@@ -4,12 +4,19 @@
   --text-color: #9a9da8;
   --background: #161a27;
   --alt-background: #262d41;
-  --sublayer: #333949;
+  --sublayer: #181d2b;
 
   --primary: #6193ef;
   --secondary: #54dd72;
   --tertiary: #f04250;
   --quarternary: #e5c07b;
+
+  --fs-50: 1.1rem;
+  --fs-100: 1.3rem;
+  --fs-200: 1.8rem;
+  --fs-300: 2.3rem;
+  --fs-400: 2.8rem;
+  --fs-500: 3.3rem;
 }
 
 
@@ -26,50 +33,57 @@ body {
   padding: 0;
   margin: 0;
 
+  /*background-image: url(./assets/q5vqv973wot71.gif);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;*/
+
   background-color: var(--background);
   overflow-x: hidden;
 }
 
-h2, h3, p, a {
+
+h2, h3, p {
   color: var(--text-color);
 }
 
 h1 {
   color: var(--alt-text-color);
-  font-size: 3.5em;
+  font-size: var(--fs-500);
   font-family: 'Ubuntu', sans-serif;
 
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 
-h2, h3, h4, a {
+h2, h3, h4 {
   font-family: 'Ubuntu Mono', monospace;
   color: var(--text-color);
 }
 
 h2 {
-  font-size: 2.9em;
+  font-size: var(--fs-400);
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
 h3 {
-  font-size: 2.5em;
+  font-size: var(--fs-300);
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
 h4 {
-  font-size: 2em;
+  font-size: var(--fs-200);
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
 
 p {
-  font-size: 1.5rem;
+  font-size: var(--fs-100);
   font-family: 'Ubuntu', sans-serif;
+  white-space: balance;
 }
 
 main {
@@ -78,26 +92,33 @@ main {
   align-items: center;
   justify-content: center;
   row-gap: 40vh;
+  counter-reset: section;
 }
 
 /*Section Styles*/
 section {
-  min-width: 70vw;
+  width: 60vw;
   padding: 1rem;
   padding-left: 3rem;
   padding-right: 3rem;
-  text-align: left;
+
+  /*background-color: #161a27be;
+  backdrop-filter: blur(10px);*/
 }
 
-section h2, h3, h4 {
+.content-section h2, h3, h4 {
   font-weight: 400;
   color: var(--alt-text-color);
   position: relative;
-  
 }
 
-section h2>span {
+.content-section h2::before {
+  counter-increment: section;
   color: var(--primary);
+  font-size: 0.6em;
+  content: "0" counter(section) ". ";
+  position: relative;
+  top: -5px; /* Vertically center the numbering */
 }
 
 
@@ -110,10 +131,14 @@ section h2>span {
 nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0.3rem 1rem 0.3rem 1rem;
+
+  /*background-color: #161a27be;
+  backdrop-filter: blur(10px);*/
 }
 
-nav > ul {
+#menu {
   list-style-type: none;
   display: flex;
   justify-content: center;
@@ -124,28 +149,38 @@ nav > ul {
   column-gap: 1em;
 }
 
+.link {
+  color: var(--alt-text-color);
+  display: inline-block;
+  font-size: 1.7rem !important;
+  text-decoration: none !important;
+  position: relative;
+  
+  font-family: 'Ubuntu Mono', monospace !important;
+  padding: 0.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: all 200ms ease-out;
+}
+
+.link:hover {
+  transform: translateY(-10%);
+  color: var(--primary);
+  
+}
+
 #logo {
   width: 5em;
   padding: 0;
   margin: 0;
 }
 
-#social-links {
-  margin-left: auto;
-}
 
-.link {
-  text-decoration: none;
-  font-size: 1.2rem;
-}
 
-.social-icon {
-  width: 2em;
-  height: auto;
-}
 
 .social-link {
   text-decoration: none;
+  width: 2em !important;
 }
 
 /* DEfault section styles */
@@ -153,7 +188,6 @@ nav > ul {
 /*Greeting styles*/
 
 #header {
-  width: 100dvw;
   height: calc(100vh - 12rem);
 
   display: flex;
@@ -161,7 +195,7 @@ nav > ul {
   justify-content: center;
   column-gap: 2rem;
 
-  background: none;
+  margin-top: 1rem;
 }
 
 #intro {
@@ -169,13 +203,21 @@ nav > ul {
   font-size: 1.3em;
   color: var(--primary);
   font-family: 'Ubunto Mono', monospace;
+  /*animation: fade-down 1s ease;*/
 }
+
+/*#name {
+  animation: fade-down 1s ease;
+  animation-delay: 0.1s;
+}*/
 
 #subheading {
   font-family: 'Ubuntu', sans-serif;
   margin: 0;
   margin-top: 0.4em;
   max-width: 25ch;
+  /*animation: fade-down 1s ease;
+  animation-delay: 0.2s;*/
 }
 
 #prog {
@@ -201,31 +243,95 @@ nav > ul {
 
 #bottom-text {
   max-width: 60ch;
+  /*animation: fade-down 1s ease;
+  animation-delay: 0.3s;*/
+}
+
+#hero {
+  width: 20em;
+ /* animation: fade-down 1s ease;
+  animation-delay: 0.1s;*/
+}
+
+#logo-shape-1, #logo-shape-2  {
+  transition: transform 200ms ease;
+}
+
+#hero:hover {
+  #logo-shape-1 {
+    transform: translate(-5%, 2%);
+  }
+
+  #logo-shape-2 {
+    transform: translate(5%, -2%);
+  }
+}
+
+#logo {
+  padding: 0;
+  margin: 0;
+}
+
+#logo-nav-shape-1, #logo-nav-shape-2  {
+  transition: transform 200ms ease;
+}
+
+#logo:hover {
+
+  #logo-nav-shape-1 {
+    transform: translate(-5%, 2%);
+  }
+
+  #logo-nav-shape-2 {
+    transform: translate(5%, -2%);
+  }
 }
 
 
 /*About section styles*/
 
-#about {
-  display: flex;
-  width: 70dvw;
-  justify-content: space-between;
-}
 
 #about-text {
-  max-width: 70ch;
+  max-width: 100%;
+}
+
+#about li {
+  list-style: none;
+  font-size: var(--fs-50);
+  color: var(--text-color);
+  font-family: 'Ubuntu', sans-serif;
+  padding-top: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+#about li::before {
+  content: '';
+  display: inline-block;
+  height: var(--fs-50);
+  width: var(--fs-50);
+  background-image: url('./assets/list-style.svg');
+  background-size: contain;
+  transform: translateY(0.2rem);
+}
+
+#about ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  max-width: 20vw
 }
 
 #picture-wrapper {
-  width: 15vw;
-  height: 15vw;
+  width: 200px;
+  height: 200px;
 
-  margin-top: 6rem;
-
-  display: block;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  float: right;
 
   background: var(--alt-background);
   border: 0.2rem var(--alt-background) solid;
+  transition: transform 200ms ease-out;
 }
 
 #picture-wrapper > img {
@@ -238,4 +344,73 @@ nav > ul {
   box-shadow: 0.5rem 0.5rem 15px var(--background);
   background: linear-gradient(45deg, var(--alt-background), var(--tertiary));
   background-size: 400% 400%;
+  backdrop-filter: multiply;
+  transition: 200ms ease-out;
+}
+
+#picture-wrapper:hover {
+  transform: translate(5%, 5%);
+  > img {
+    top: -2rem;
+    left: -2rem;
+  }
+}
+
+/* Education Section */
+
+.cards {
+  display: grid;
+  grid-template-columns: 17% 1fr;
+  grid-auto-rows: auto;
+  gap: 1rem;
+}
+
+
+.card-title {
+  min-width: 100%;
+  position: relative;
+}
+
+.card-title::after {
+  content: "";
+  position: absolute;
+  grid-column: 1 / 2;
+  left: 0;
+  right: 0;
+  top: calc(6rem + var(--fs-100));
+
+  width: 3px;
+  height: 75%;
+  margin: 0 auto;
+  background: var(--alt-background);
+}
+
+.card-title:nth-last-child(2)::after {
+  display: none;
+}
+
+.card-title-text {
+  color: var(--alt-text-color);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--fs-100);
+  width: 100%;
+  height: fit-content;
+  padding: 1rem;
+  padding-right: 0.1rem;
+  text-align: center;
+
+  margin-top: 3rem;
+ 
+
+  white-space: nowrap;
+  background-color: var(--alt-background);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.card-content {
+  max-width: 100%;
+  padding: 1rem;
+  background-color: var(--sublayer);
+  border: 2px solid var(--alt-background);
+  border-radius: 1rem;
 }
