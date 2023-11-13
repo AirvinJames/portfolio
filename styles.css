@@ -17,6 +17,8 @@
   --fs-300: 2.5rem;
   --fs-400: 3rem;
   --fs-500: 3.5rem;
+  
+  --number-of-characters: 20;
 }
 
 
@@ -205,10 +207,56 @@ nav {
   /*animation: fade-down 1s ease;*/
 }
 
-/*#name {
-  animation: fade-down 1s ease;
-  animation-delay: 0.1s;
-}*/
+#name {
+  position: relative;
+  display: inline-block;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+#name::before, #name::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#name::before {
+  background: var(--background);
+  opacity: 1;
+  -webkit-animation: typewriter 2s steps(var(--number-of-characters)) 0.5s forwards;
+          animation: typewriter 2s steps(var(--number-of-characters)) 0.5s forwards;
+}
+#name::after {
+  width: 3px;
+  background: var(--alt-text-color);
+  -webkit-animation: typewriter 2s steps(var(--number-of-characters)) 0.5s forwards,
+    blink 1.3s steps(var(--number-of-characters)) infinite;
+          animation: typewriter 2s steps(var(--number-of-characters)) 0.5s forwards,
+    blink 1.3s steps(var(--number-of-characters)) infinite;
+}
+@-webkit-keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+@-webkit-keyframes blink {
+  0%  {background: var(--alt-text-color);}
+  49%  {background: var(--alt-text-color);}
+  50%  {background: transparent;}
+  100%  {background: transparent;}
+}
+@keyframes blink {
+  0%  {background: var(--alt-text-color);}
+  49%  {background: var(--alt-text-color);}
+  50%  {background: transparent;}
+  100%  {background: transparent;}
+} 
 
 #subheading {
   font-family: 'Ubuntu', sans-serif;
@@ -438,6 +486,29 @@ nav {
   transition: transform 300ms ease-out !important;
 }
 
+.project a {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: var(--fs-50);
+	font-family: 'Ubuntu', sans-serif;
+	position: inline-block;
+	display: flex;
+	justify-content: center;
+	transition: 200ms ease-out;
+	align-items: center;
+}
+
+.project a>svg {
+	transition: 200ms ease-out;
+}
+
+.project a:hover {
+	color: var(--primary);
+	> svg {
+		stroke: var(--primary);
+	}
+}
+
 #project1-text {
   max-width: 50%;
   height: fit-content;
@@ -549,4 +620,52 @@ nav {
 
 .line {
   background: var(--alt-background);
+  height: 280px;
+  width: 1px;
+  margin: 0 auto;
+  margin-left: 4.5rem;
+}
+
+
+#contact {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#contact a {
+	text-decoration: none;
+	font-size: var(--fs-100);
+	color: var(--secondary);
+	padding: 1rem;
+	padding-left: 2rem;
+	paddding-right: 2rem;
+	
+	border: 2px solid var(--secondary);
+	border-radius: 20px;
+	
+	text-align: center;
+	font-family: 'Ubuntu Mono', monospace;
+	
+	margion-top: 3rem;
+	margin-bottom: 3rem;
+	
+	display: inline-block;
+	
+	transition: 200ms ease-out;
+}
+
+#contact a:hover {
+	box-shadow: 0 0 2rem var(--secondary);
+	transform: scale(1.05);
+}
+
+#contact h1 {
+	margin-bottom: 5rem;
+}
+
+
+.blue {
+color: var(--primary);
 }
