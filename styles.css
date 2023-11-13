@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono&display=swap');
 :root {
-  --alt-text-color: #bcc7c6;
+  --alt-text-color: #cbd8d7;
   --text-color: #9a9da8;
   --background: #161a27;
   --alt-background: #262d41;
@@ -11,12 +11,12 @@
   --tertiary: #f04250;
   --quarternary: #e5c07b;
 
-  --fs-50: 1.1rem;
-  --fs-100: 1.3rem;
-  --fs-200: 1.8rem;
-  --fs-300: 2.3rem;
-  --fs-400: 2.8rem;
-  --fs-500: 3.3rem;
+  --fs-50: 1.3rem;
+  --fs-100: 1.5rem;
+  --fs-200: 2rem;
+  --fs-300: 2.5rem;
+  --fs-400: 3rem;
+  --fs-500: 3.5rem;
 }
 
 
@@ -33,7 +33,7 @@ body {
   padding: 0;
   margin: 0;
 
-  /*background-image: url(./assets/q5vqv973wot71.gif);
+  /*background-image: url(./assets/j8lnlq63wot71.gif);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;*/
@@ -194,8 +194,7 @@ nav {
   align-items: center;
   justify-content: center;
   column-gap: 2rem;
-
-  margin-top: 1rem;
+  margin-left: 3rem;
 }
 
 #intro {
@@ -322,8 +321,8 @@ nav {
 }
 
 #picture-wrapper {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 
   margin-top: 1rem;
   margin-left: 2rem;
@@ -362,13 +361,14 @@ nav {
   display: grid;
   grid-template-columns: 17% 1fr;
   grid-auto-rows: auto;
-  gap: 1rem;
+  row-gap: 1rem;
 }
 
 
 .card-title {
   min-width: 100%;
   position: relative;
+  z-index: -1;
 }
 
 .card-title::after {
@@ -380,7 +380,7 @@ nav {
   top: calc(6rem + var(--fs-100));
 
   width: 3px;
-  height: 75%;
+  height: 83%;
   margin: 0 auto;
   background: var(--alt-background);
 }
@@ -395,8 +395,9 @@ nav {
   font-size: var(--fs-100);
   width: 100%;
   height: fit-content;
-  padding: 1rem;
-  padding-right: 0.1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
   text-align: center;
 
   margin-top: 3rem;
@@ -410,7 +411,142 @@ nav {
 .card-content {
   max-width: 100%;
   padding: 1rem;
+  padding-left: 1.5rem;
   background-color: var(--sublayer);
   border: 2px solid var(--alt-background);
   border-radius: 1rem;
+  line-height: 2.5rem;
+}
+
+#projects:nth-child(1) {
+  margin-top: 3rem;
+}
+
+.project {
+  display: flex;
+  position: relative;
+
+  margin-bottom: 5rem;
+}
+
+
+.project img {
+  
+  max-width: 60% !important;
+  border-radius: 0.5rem !important;
+  display: inline-block !important;
+  transition: transform 300ms ease-out !important;
+}
+
+#project1-text {
+  max-width: 50%;
+  height: fit-content;
+
+  position: absolute;
+  transform-origin: center right;
+  transform: translate(80%, 40%);
+
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  background: var(--background);
+  box-shadow: 0 1rem 2rem black;
+
+  border-radius: 1rem;
+  border: 2px solid var(--sublayer);
+  transition: transform 300ms ease-out;
+}
+
+.project:hover {
+  #project1-text {
+    transform: translate(100%, 40%);
+  }
+
+  > img {
+    transform: translate(-10%, 0%);
+  }
+}
+
+#project2 {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+#project2-text {
+  max-width: 50%;
+  height: fit-content;
+  position: absolute;
+
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  background: var(--background);
+  box-shadow: 0 1rem 2rem black;
+
+  transform: translate(0, 20%);
+
+  border-radius: 1rem;
+  border: 2px solid var(--sublayer);
+  transition: transform 300ms ease-out;
+}
+
+#project2-img {
+  max-width: 60% !important;
+  border-radius: 0.5rem !important;
+  display: inline-block !important;
+  transition: transform 300ms ease-out !important;
+
+  transform: translateX(70%);
+  z-index: -1;
+}
+
+#project2:hover {
+  
+  #project2-text {
+    transform: translate(-20%, 20%);
+  }
+
+  #project2-img {
+    transform: translateX(80%);
+  }
+}
+
+#side-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+
+#side-menu li {
+  list-style-type: none;
+  padding: 1rem;
+}
+
+#side-menu li {
+  list-style-type: none;
+  padding: 1rem;
+  transition: transform 200ms ease-out;
+}
+
+.icon {
+  transition: stroke 200ms ease-out;
+}
+
+#side-menu  li:hover{
+  transform: translateY(-10%);
+  .icon {
+    stroke: var(--primary);
+  }
+}
+
+.line {
+  background: var(--alt-background);
 }
